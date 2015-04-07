@@ -13,16 +13,21 @@ Document reviewed by Ramandeep Singh on ............
 
 2) Java
 
+3) Postman tool/plug in
+
 ---
 #Steps for installation
 ---
-1) Download the Sekuli Server jar and put it
+1) Download the selenium-server-standalone-2.45.0.jar from given github repo and put it
 somewhere, let say into d:/mySekuliDir.
 
-2) Open command prompt/terminal and go to the
+2) Download the Sekuli Server jar from given github repo and put it
+somewhere, let say into d:/mySekuliDir.
+
+3) Open command prompt/terminal and go to the
 same dir, let say d:/mySekuliDir.
 
-3) Run the following command "java -jar sekuliServer.jar "
+4) Run the following command "java -jar sekuliServer.jar "
 You will get the message 
 
 
@@ -64,7 +69,16 @@ Paramater = imagesTarBall, Value = YourTarfile.tar.gz
 
 (Assumptions : YourTarfile.tar.gz is the name of your tar ball which contains the .png images. Please make sure the name of images you will pass in subsequent requests should be same as the name of .png files, that you kept in tar ball)
 
-2) Clicking: This functionality is implemented for clicking on an images.
+2) Start Selenium Server : This is to start selenium server.
+required parameters are :
+
+Paramater = comamd, Value = startSelenium
+
+Paramater = seleniumJarName, Value = selenium-server-standalone-2.45.0.jar
+
+(Assumptions : selenium-server-standalone-2.45.0.jar is the name of jar you downloaded. If you are using some other version of selenium then use that name in place of selenium-server-standalone-2.45.0.jar)
+
+3) Clicking: This functionality is implemented for clicking on an images.
 required parameters are :
 
 Paramater = comamd, Value = click
@@ -73,7 +87,7 @@ Paramater = images1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be clicked)
 
-3) Dobule Clicking: This functionality is implemented for clicking twice on an images.
+4) Dobule Clicking: This functionality is implemented for clicking twice on an images.
 required parameters are :
 
 Paramater = comamd, Value = dobuleClick
@@ -82,7 +96,7 @@ Paramater = images1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be double clicked)
 
-4) Typing: This is the functionality for typing some text.
+5) Typing: This is the functionality for typing some text.
 required parameters are :
 
 Paramater = comamd, Value = type
@@ -91,7 +105,7 @@ Paramater = images1, Value = abcde..
 
 (Assumptions : abcde... is the name of image that you want to be typed)
 
-5) Existing: This functionality is implemented for finding if an image exists on the screen, the special behaviour of this feature is that you don't need to do exception handling for this method, if required image is not available on the screen.
+6) Existing: This functionality is implemented for finding if an image exists on the screen, the special behaviour of this feature is that you don't need to do exception handling for this method, if required image is not available on the screen. It returns true if given image is found on the screen else false.
 required parameters are :
 
 Paramater = comamd, Value = exists
@@ -100,7 +114,8 @@ Paramater = images1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be search)
 
-6) Finding: This feature is simmilar to exists method except that it throws a find failed exception if search pattern/image is not available on the screen.
+7) Finding: This feature is simmilar to exists method except that it throws a find failed exception if search pattern/image is not available on the screen.
+It returns a list which contains one json object which contains x, y cordinates and width, height of the image/pattern which we were looking for.
 required parameters are :
 
 Paramater = comamd, Value = find
@@ -109,7 +124,8 @@ Paramater = images1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be find)
 
-7) Finding All: This is for finding all occurrence of an image.
+8) Finding All: This is for finding all occurrence of an image.
+It returns a list which contains json objects which contains x, y cordinates and width, height of the image/pattern for all the occurance in the screen.
 required parameters are :
 
 Paramater = comamd, Value = findAll
@@ -118,7 +134,7 @@ Paramater = images1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be find)
 
-8) Wait: This functionality is implemented for achieving  wait feature.
+9) Wait: This functionality is implemented for achieving  wait feature.
 required parameters are :
 
 Paramater = comamd, Value = wait
@@ -129,7 +145,7 @@ Paramater = time, Value = Numeric value…
 
 (Assumptions : x.png is the name of image that you want to be clicked)
 
-9) Wait n Vanish: This is opposite feature to wait, waitVanish will wait for a  given time to appear an image on screen.
+10) Wait n Vanish: This is opposite feature to wait, waitVanish will wait for a  given time to appear an image on screen.
 required parameters are :
 
 Paramater = comamd, Value = waitVanish
@@ -140,7 +156,7 @@ Paramater = time, Value = Numeric value…
 
 (Assumptions : x.png is the name of image that you want to be clicked)
 
-10) Drag n Drop: This is dragDrop feature.
+11) Drag n Drop: This is dragDrop feature.
 required parameters are :
 
 Paramater = comamd, Value = dragDrop

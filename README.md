@@ -1,1 +1,1 @@
-# sekuliServer
+# SekuliServer

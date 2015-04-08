@@ -199,7 +199,6 @@ public class SekuliServer {
         		coordinates[2] = match.h;
         		coordinates[3] = match.w;
         		list.add(coordinates);
-        		screen.type(null, image, 0);
         }
         catch(Exception e)
         {
@@ -235,7 +234,6 @@ public class SekuliServer {
             		coordinates[3] = match.w;
             		list.add(coordinates);
         		}
-        		screen.type(null, image, 0);
         }
         catch(Exception e)
         {
@@ -257,6 +255,7 @@ public class SekuliServer {
         Match match =null;
         try
         {
+        		System.out.println("Image : " + image1 + ", time : " + time);
         		String image = imagegDir + image1;;
         		int timeout = Integer.parseInt(time);
         		match = screen.wait(image, timeout);
@@ -280,6 +279,7 @@ public class SekuliServer {
         Boolean flag = false;
         try
         {
+        		System.out.println("Image : " + image1 + ", time : " + time);
         		String image = imagegDir + image1;
     			int timeout = Integer.parseInt(time);
     			flag = screen.waitVanish(image, timeout);
@@ -327,6 +327,22 @@ public class SekuliServer {
 	
     public static void main(String[] args) 
     {
+    	post("/seleniumServer/*", (request, response) -> 
+    	{
+    		System.out.println("This is selenium server");
+    		String uri = new String(request.uri());
+    		String url = new String(request.url());
+    		System.out.println("URI : " + request.uri());
+    		System.out.println("URL : " + request.url());
+    		String remoteIP = url.substring(7, request.url().lastIndexOf(':'));
+    		String seleniumUri = uri.substring(16, request.uri().length());
+    		System.out.println("Remote IP : " + remoteIP);
+    		System.out.println("Selenium URI : " + seleniumUri);
+    		String seleniumUrl = "http://" + remoteIP + ":4444/wd/hub/" + seleniumUri;
+    		System.out.println("Selenium URL : " + seleniumUrl);
+    		response.redirect(seleniumUrl);
+    		return response;
+    	});
     	
     	post("/sekuliServer", (request, response) -> 
     	{
@@ -346,7 +362,7 @@ public class SekuliServer {
     		{
 	    	    case "initilaiseImages":
 		            {
-		            	//------------Code to upload the Tar File---------------
+		            	//------------Code to upload the Tar File--------------------
 		            	String imagesDir = currentDir + "/imagesDir";
 		                System.out.println("Current dir:"+ imagesDir);
 	            		MultipartConfigElement multipartConfigElement = new MultipartConfigElement(imagesDir);
@@ -355,13 +371,27 @@ public class SekuliServer {
 	                    file.write("images.tar.gz");
 	                    String tarFileLocation = currentDir + "/imagesDir/images.tar.gz"; 
 	                    String unTarFilesDir = currentDir + "/imagesDir/";
-	                    
+		            	
+	                    //------------Code to unTar images Files----------------------	                    
 	                    unTar(tarFileLocation, unTarFilesDir);
 	            		
-	                    response.status(200);
+   	                    response.status(200);
 	            		response.body("Command executed successfully...");
 		            }
 		            break;
+		            
+	    	    case "startSelenium":
+	            {
+	            	//------------Code to start the Selenium Server---------------
+                    String path = currentDir + "/" + parameters[1]; 
+                    ProcessBuilder pb = new ProcessBuilder("java", "-jar", path);
+                    System.out.println("Selenium Jar Location : " + path);
+                    Process p = pb.start();
+                    
+                    response.status(200);
+            		response.body("Command executed successfully...");
+	            }
+	            break;
 		           
 	            case "click":
 		            {
@@ -433,7 +463,7 @@ public class SekuliServer {
 		            
 	            case "wait" :
 		            {
-		            	if(wait(parameters[0], parameters[1]) != null)
+		            	if(wait(parameters[0], parameters[2]) != null)
 		            	{
 		            		response.status(200);
 		            		response.body("Command executed successfully...");
@@ -443,7 +473,7 @@ public class SekuliServer {
 		            
 	            case "waitVanish" :
 		            {
-		            	if(waitVanish(parameters[0], parameters[1]))
+		            	if(waitVanish(parameters[0], parameters[2]))
 		            	{
 		            		response.status(200);
 		            		response.body("Command executed successfully...");

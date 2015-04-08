@@ -63,7 +63,7 @@ Please note that you have to use POST method to make these requests.
 1) Initialising images : This is to provide all the images to application.
 required parameters are :
 
-Paramater = comamd, Value = initilaiseImages
+Paramater = command, Value = initilaiseImages
 
 Paramater = imagesTarBall, Value = YourTarfile.tar.gz
 
@@ -72,7 +72,7 @@ Paramater = imagesTarBall, Value = YourTarfile.tar.gz
 2) Start Selenium Server : This is to start selenium server.
 required parameters are :
 
-Paramater = comamd, Value = startSelenium
+Paramater = command, Value = startSelenium
 
 Paramater = seleniumJarName, Value = selenium-server-standalone-2.45.0.jar
 
@@ -81,65 +81,65 @@ Paramater = seleniumJarName, Value = selenium-server-standalone-2.45.0.jar
 3) Clicking: This functionality is implemented for clicking on an images.
 required parameters are :
 
-Paramater = comamd, Value = click
+Paramater = command, Value = click
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be clicked)
 
 4) Dobule Clicking: This functionality is implemented for clicking twice on an images.
 required parameters are :
 
-Paramater = comamd, Value = dobuleClick
+Paramater = command, Value = dobuleClick
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be double clicked)
 
 5) Typing: This is the functionality for typing some text.
 required parameters are :
 
-Paramater = comamd, Value = type
+Paramater = command, Value = type
 
-Paramater = images1, Value = abcde..
+Paramater = image1, Value = abcde..
 
 (Assumptions : abcde... is the name of image that you want to be typed)
 
 6) Existing: This functionality is implemented for finding if an image exists on the screen, the special behaviour of this feature is that you don't need to do exception handling for this method, if required image is not available on the screen. It returns true if given image is found on the screen else false.
 required parameters are :
 
-Paramater = comamd, Value = exists
+Paramater = command, Value = exists
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be search)
 
 7) Finding: This feature is simmilar to exists method except that it throws a find failed exception if search pattern/image is not available on the screen.
-It returns a list which contains one json object which contains x, y cordinates and width, height of the image/pattern which we were looking for.
+It returns a list which contains one json object which contains x, y cordinates and width, height of the image/pattern which we were looking for. If image doesn't find, returns an empty list in jason object.
 required parameters are :
 
-Paramater = comamd, Value = find
+Paramater = command, Value = find
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be find)
 
 8) Finding All: This is for finding all occurrence of an image.
-It returns a list which contains json objects which contains x, y cordinates and width, height of the image/pattern for all the occurance in the screen.
+It returns a list which contains json objects which contains x, y cordinates and width, height of the image/pattern for all the occurance in the screen. If image doesn't find, returns an empty list in jason object.
 required parameters are :
 
-Paramater = comamd, Value = findAll
+Paramater = command, Value = findAll
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 (Assumptions : x.png is the name of image that you want to be find)
 
 9) Wait: This functionality is implemented for achieving  wait feature.
 required parameters are :
 
-Paramater = comamd, Value = wait
+Paramater = command, Value = wait
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 Paramater = time, Value = Numeric value…
 
@@ -148,9 +148,9 @@ Paramater = time, Value = Numeric value…
 10) Wait n Vanish: This is opposite feature to wait, waitVanish will wait for a  given time to appear an image on screen.
 required parameters are :
 
-Paramater = comamd, Value = waitVanish
+Paramater = command, Value = waitVanish
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
 Paramater = time, Value = Numeric value…
 
@@ -159,11 +159,11 @@ Paramater = time, Value = Numeric value…
 11) Drag n Drop: This is dragDrop feature.
 required parameters are :
 
-Paramater = comamd, Value = dragDrop
+Paramater = command, Value = dragDrop
 
-Paramater = images1, Value = x.png
+Paramater = image1, Value = x.png
 
-Paramater = images2, Value = y.png
+Paramater = image2, Value = y.png
 
 (Assumptions : x.png is the name of image that you want to be move into y.png image representing elemnet)
 

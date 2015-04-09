@@ -7,9 +7,9 @@ Document created by Sudhanshu Singhal on 3-Apr-2015
 Document reviewed by Ramandeep Singh on ............
 
 ---
-#Prerequisites to install Sekuli Server
+#Prerequisites to install Sikuli Server
 ---
-1) Sekuli IDE installation
+1) Sikuli IDE installation
 
 2) Java
 
@@ -19,15 +19,15 @@ Document reviewed by Ramandeep Singh on ............
 #Steps for installation
 ---
 1) Download the selenium-server-standalone-2.45.0.jar from given github repo and put it
-somewhere, let say into d:/mySekuliDir.
+somewhere, let say into d:/mySikuliDir.
 
-2) Download the Sekuli Server jar from given github repo and put it
-somewhere, let say into d:/mySekuliDir.
+2) Download the Sikuli Server jar from given github repo and put it
+somewhere, let say into d:/mySikuliDir.
 
 3) Open command prompt/terminal and go to the
-same dir, let say d:/mySekuliDir.
+same dir, let say d:/mySikuliDir.
 
-4) Run the following command "java -jar sekuliServer.jar "
+4) Run the following command "java -jar sikuliServer.jar "
 You will get the message 
 
 
@@ -42,7 +42,7 @@ If you running the application first time you must have to provide images on whi
 
 For this you have to do following steps :
 
-1) Run Sekuli IDE
+1) Run Sikuli IDE
 
 2) Click images of required sections\elements from the screen and store them to some location.
 
@@ -51,7 +51,7 @@ For this you have to do following steps :
 4) Type the following url in postman, upload your newely created TAR file and put key as “imagesTarBall” and make a POST call.
 
 
-http://xx.xx.xx.xx:4567/sekuliServer?command=initialiseImages
+http://xx.xx.xx.xx:4567/sikuliServer?command=initialiseImages
 (Assumptions : xx.xx.xx.xx is the ip of desired machine where you want server to be run)
 
 ---
@@ -169,7 +169,7 @@ Paramater = image2, Value = y.png
 
 A sample url for reference : 
 
-http://10.0.9.165:4567/sekuliServer?command=waitVanish&image1=startButton.png&time=4 
+http://10.0.9.165:4567/sikuliServer?command=waitVanish&image1=startButton.png&time=4 
 
 
 

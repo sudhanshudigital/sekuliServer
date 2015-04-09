@@ -1,5 +1,5 @@
 ---
-#Installation Guide To Sekuli Server
+#Installation Guide To Sikuli Server
 ---
 
 Document created by Sudhanshu Singhal on 3-Apr-2015
